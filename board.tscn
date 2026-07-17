@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://kkvw1qoqvfk3"]
+
+[ext_resource type="Script" uid="uid://6huqex56rccg" path="res://board.gd" id="1_psm7c"]
+[ext_resource type="Texture2D" uid="uid://srs2vpxeyvhj" path="res://assets/BoardFront.png" id="2_8l818"]
+[ext_resource type="PackedScene" uid="uid://ct8ox4xs88vvn" path="res://column.tscn" id="3_8l818"]
+
+[node name="Board" type="Node2D" unique_id=660883949]
+script = ExtResource("1_psm7c")
+column_scene = ExtResource("3_8l818")
+
+[node name="BoardBack" type="ColorRect" parent="." unique_id=1726071407]
+offset_right = 560.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.3443818, 0.5974655, 1, 1)
+
+[node name="PieceContainer" type="Node2D" parent="." unique_id=1032316200]
+
+[node name="BoardFront" type="Sprite2D" parent="." unique_id=1039164987]
+texture = ExtResource("2_8l818")
+centered = false

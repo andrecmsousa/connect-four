@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ct8ox4xs88vvn"]
+
+[ext_resource type="Script" uid="uid://4s1l5or5p0lb" path="res://column.gd" id="1_hh8dp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(80, 480)
+
+[node name="Column" type="Area2D" unique_id=398460907]
+script = ExtResource("1_hh8dp")
+
+[node name="ColumnCollisionShape" type="CollisionShape2D" parent="." unique_id=130268412]
+position = Vector2(40, 240)
+shape = SubResource("RectangleShape2D_ostoq")
+
+[node name="Highlight" type="ColorRect" parent="." unique_id=244087694]
+offset_right = 80.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(1, 1, 0.5019608, 0.3254902)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
