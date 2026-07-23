@@ -3,12 +3,7 @@ extends Node2D
 @export var column_scene: PackedScene
 var board = []
 var next_empty_row = []
-
-enum Piece {
-	EMPTY,
-	RED,
-	YELLOW
-}
+var current_player_piece = GameTypes.PlayerPiece.NONE
 
 const ROW_COUNT := 6
 const COLUMN_COUNT := 7
@@ -16,6 +11,7 @@ const CELL_WIDTH := 80
 
 func _ready() -> void:
 	initialize_board()
+	current_player_piece = GameTypes.PlayerPiece.PLAYER_ONE
 	
 	for i in COLUMN_COUNT:
 		var column = column_scene.instantiate()
@@ -36,9 +32,10 @@ func _on_column_clicked(column_index: int) -> void:
 		print("Placing piece on column ", column_index, ", row ", new_piece_row)
 		
 		next_empty_row[column_index] -= 1
-		board[new_piece_row][column_index] = Piece.YELLOW
+		board[new_piece_row][column_index] = current_player_piece
+		$PieceContainer.spawn_piece(get_cell_position(new_piece_row, column_index), current_player_piece)
 		
-		$PieceContainer.spawn_piece(get_cell_position(new_piece_row, column_index))
+		current_player_piece = GameTypes.toggle_player_piece(current_player_piece)
 
 func initialize_board() -> void:
 	board.clear()
@@ -47,7 +44,7 @@ func initialize_board() -> void:
 	for row in ROW_COUNT:
 		board.append([])
 		for column in COLUMN_COUNT:
-			board[-1].append(Piece.EMPTY)
+			board[-1].append(GameTypes.PlayerPiece.NONE)
 			next_empty_row.append(ROW_COUNT - 1)
 
 func get_cell_position(row: int, column: int) -> Vector2:

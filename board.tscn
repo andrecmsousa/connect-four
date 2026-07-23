@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://kkvw1qoqvfk3"]
 
-[ext_resource type="Script" uid="uid://6huqex56rccg" path="res://board.gd" id="1_psm7c"]
+[ext_resource type="Script" uid="uid://6huqex56rccg" path="res://scripts/board.gd" id="1_psm7c"]
 [ext_resource type="Texture2D" uid="uid://srs2vpxeyvhj" path="res://assets/BoardFront.png" id="2_8l818"]
 [ext_resource type="PackedScene" uid="uid://ct8ox4xs88vvn" path="res://column.tscn" id="3_8l818"]
-[ext_resource type="Script" uid="uid://c8p1713636vaf" path="res://piece_container.gd" id="3_vf5bc"]
+[ext_resource type="Script" uid="uid://c8p1713636vaf" path="res://scripts/piece_container.gd" id="3_vf5bc"]
 [ext_resource type="PackedScene" uid="uid://3wy1sahc8cf6" path="res://piece.tscn" id="4_mgc1s"]
 
 [node name="Board" type="Node2D" unique_id=660883949]
