@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://3wy1sahc8cf6"]
+
+[node name="Piece" type="ColorRect" unique_id=795443683]
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.6819924, 0.6823507, 0, 1)
