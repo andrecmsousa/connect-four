@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var column_scene: PackedScene
-var board = []
-var next_empty_row = []
+var board : Array = []
+var next_empty_row : Array[int] = []
 var current_player_piece = GameTypes.PlayerPiece.NONE
 var empty_slots = GameTypes.COLUMN_COUNT * GameTypes.ROW_COUNT
 
@@ -44,11 +44,13 @@ func initialize_board() -> void:
 	board.clear()
 	next_empty_row.clear()
 	
+	for column in GameTypes.COLUMN_COUNT:
+		next_empty_row.append(GameTypes.ROW_COUNT - 1)
+	
 	for row in GameTypes.ROW_COUNT:
 		board.append([])
 		for column in GameTypes.COLUMN_COUNT:
 			board[-1].append(GameTypes.PlayerPiece.NONE)
-			next_empty_row.append(GameTypes.ROW_COUNT - 1)
 
 func get_cell_position(row: int, column: int) -> Vector2:
 	return Vector2(column * CELL_WIDTH, row * CELL_WIDTH)

@@ -32,7 +32,7 @@ const DIRECTION_TO_VECTOR := {
 	Direction.BOTTOM_RIGHT: Vector2i(1, 1),
 	Direction.BOTTOM: Vector2i(1, 0),
 	Direction.BOTTOM_LEFT: Vector2i(1, -1),
-	Direction.LEFT: Vector2(0, -1),
+	Direction.LEFT: Vector2i(0, -1),
 	Direction.TOP_LEFT: Vector2i(-1, -1)
 }
 
