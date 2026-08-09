@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://5arxs3jwb6ni"]
+
+[ext_resource type="Theme" uid="uid://rtbr4i01cm28" path="res://assets/themes/ConnectFourTheme.tres" id="1_ylsxj"]
+
+[node name="MenuPanel" type="Control" unique_id=913458492]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ylsxj")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1338991836]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuContainer" type="VBoxContainer" parent="CenterContainer" unique_id=166785570]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/MenuContainer" unique_id=1758190858]
+layout_mode = 2
+text = "CONNECT FOUR"
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CenterContainer/MenuContainer" unique_id=2055332975]
+layout_mode = 2

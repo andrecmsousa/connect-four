@@ -1,13 +1,8 @@
 [gd_scene format=3 uid="uid://0adsgnd5crmi"]
 
 [ext_resource type="Script" uid="uid://dht0yike81o12" path="res://scripts/main_menu.gd" id="1_l6cm7"]
-
-[sub_resource type="SystemFont" id="SystemFont_ajtct"]
-font_names = PackedStringArray("Arial Rounded MT")
-
-[sub_resource type="Theme" id="Theme_ostoq"]
-default_font = SubResource("SystemFont_ajtct")
-default_font_size = 50
+[ext_resource type="PackedScene" uid="uid://blqpdglron6af" path="res://scenes/game.tscn" id="2_ekxnf"]
+[ext_resource type="PackedScene" uid="uid://5arxs3jwb6ni" path="res://scenes/ui/menu_panel.tscn" id="4_wu84c"]
 
 [node name="MainMenu" type="Control" unique_id=679803472]
 layout_mode = 3
@@ -16,33 +11,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_ostoq")
 script = ExtResource("1_l6cm7")
+game_scene = ExtResource("2_ekxnf")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=606912945]
+[node name="MenuPanel" parent="." unique_id=913458492 instance=ExtResource("4_wu84c")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="MenuContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1580382905]
-layout_mode = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="CenterContainer/MenuContainer" unique_id=1741746730]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "CONNECT FOUR"
-
-[node name="StartButton" type="Button" parent="CenterContainer/MenuContainer" unique_id=832354073]
+[node name="StartButton" type="Button" parent="MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="0" unique_id=1691739926]
 layout_mode = 2
 text = "Start New Game"
 
-[node name="ExitButton" type="Button" parent="CenterContainer/MenuContainer" unique_id=1776234741]
+[node name="ExitButton" type="Button" parent="MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="1" unique_id=1674082013]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="CenterContainer/MenuContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CenterContainer/MenuContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuPanel/CenterContainer/MenuContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+
+[editable path="MenuPanel"]
