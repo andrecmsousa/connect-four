@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://0adsgnd5crmi"]
+
+[ext_resource type="Script" uid="uid://dht0yike81o12" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="SystemFont" id="SystemFont_ajtct"]
+font_names = PackedStringArray("Arial Rounded MT")
+
+[sub_resource type="Theme" id="Theme_ostoq"]
+default_font = SubResource("SystemFont_ajtct")
+default_font_size = 50
+
+[node name="MainMenu" type="Control" unique_id=679803472]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ostoq")
+script = ExtResource("1_l6cm7")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=606912945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1580382905]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="CenterContainer/MenuContainer" unique_id=1741746730]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CONNECT FOUR"
+
+[node name="StartButton" type="Button" parent="CenterContainer/MenuContainer" unique_id=832354073]
+layout_mode = 2
+text = "Start New Game"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/MenuContainer" unique_id=1776234741]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="CenterContainer/MenuContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuContainer/ExitButton" to="." method="_on_exit_button_pressed"]
