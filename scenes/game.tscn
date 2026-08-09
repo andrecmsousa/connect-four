@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://kkvw1qoqvfk3" path="res://scenes/board.tscn" id="2_lnu2h"]
 [ext_resource type="Script" uid="uid://db8rguwvfcvpx" path="res://scripts/pause_menu.gd" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://5arxs3jwb6ni" path="res://scenes/ui/menu_panel.tscn" id="4_iywne"]
+[ext_resource type="Script" uid="uid://c2jcbhy6e8aah" path="res://scripts/game_over_menu.gd" id="5_iywne"]
 
 [node name="Game" type="Node" unique_id=1034552346]
 script = ExtResource("1_yqjtg")
@@ -11,9 +12,9 @@ script = ExtResource("1_yqjtg")
 [node name="Board" parent="." unique_id=660883949 instance=ExtResource("2_lnu2h")]
 position = Vector2(296, 84)
 
-[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=893653053]
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=893653053]
 
-[node name="PauseMenu" type="Control" parent="PauseLayer" unique_id=1125376925]
+[node name="PauseMenu" type="Control" parent="MenuLayer" unique_id=1125376925]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -23,23 +24,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_lbhrr")
 
-[node name="MenuPanel" parent="PauseLayer/PauseMenu" unique_id=913458492 instance=ExtResource("4_iywne")]
+[node name="MenuPanel" parent="MenuLayer/PauseMenu" unique_id=913458492 instance=ExtResource("4_iywne")]
 layout_mode = 1
 
-[node name="ResumeButton" type="Button" parent="PauseLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="0" unique_id=832820387]
+[node name="ResumeButton" type="Button" parent="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="0" unique_id=832820387]
 layout_mode = 2
 text = "Resume"
 
-[node name="StartButton" type="Button" parent="PauseLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="1" unique_id=641876421]
+[node name="StartButton" type="Button" parent="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="1" unique_id=641876421]
 layout_mode = 2
 text = "Start New Game"
 
-[node name="ExitButton" type="Button" parent="PauseLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="2" unique_id=1767888385]
+[node name="ExitButton" type="Button" parent="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="2" unique_id=1767888385]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="PauseLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ResumeButton" to="PauseLayer/PauseMenu" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/StartButton" to="PauseLayer/PauseMenu" method="_on_start_button_pressed"]
-[connection signal="pressed" from="PauseLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ExitButton" to="PauseLayer/PauseMenu" method="_on_exit_button_pressed"]
+[node name="GameOverMenu" type="Control" parent="MenuLayer" unique_id=1355576670]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_iywne")
 
-[editable path="PauseLayer/PauseMenu/MenuPanel"]
+[node name="MenuPanel" parent="MenuLayer/GameOverMenu" unique_id=857645054 instance=ExtResource("4_iywne")]
+layout_mode = 1
+
+[node name="Result" type="Label" parent="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer" parent_id_path=PackedInt32Array(857645054, 166785570) index="1" unique_id=1925384000]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(857645054, 2055332975) index="0" unique_id=5013235]
+layout_mode = 2
+text = "Start New Game"
+
+[node name="ExitButton" type="Button" parent="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(857645054, 2055332975) index="1" unique_id=2079397458]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ResumeButton" to="MenuLayer/PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/StartButton" to="MenuLayer/PauseMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ExitButton" to="MenuLayer/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/StartButton" to="MenuLayer/GameOverMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ExitButton" to="MenuLayer/GameOverMenu" method="_on_exit_button_pressed"]
+
+[editable path="MenuLayer/PauseMenu/MenuPanel"]
+[editable path="MenuLayer/GameOverMenu/MenuPanel"]

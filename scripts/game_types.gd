@@ -26,3 +26,12 @@ static func toggle_player_piece(player_piece: PlayerPiece) -> PlayerPiece:
 
 static func get_player_color(player_piece: PlayerPiece) -> Color:
 	return PLAYER_COLORS[player_piece]
+
+static func player_string(player_piece: PlayerPiece) -> String:
+	match player_piece:
+		PlayerPiece.PLAYER_ONE:
+			return "Yellow"
+		PlayerPiece.PLAYER_TWO:
+			return "Red"
+		_:
+			return "No"

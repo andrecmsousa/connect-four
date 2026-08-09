@@ -4,8 +4,11 @@ extends Node2D
 var board = []
 var next_empty_row = []
 var current_player_piece = GameTypes.PlayerPiece.NONE
+var empty_slots = GameTypes.COLUMN_COUNT * GameTypes.ROW_COUNT
 
 const CELL_WIDTH := 80
+
+signal game_over(result: String)
 
 func _ready() -> void:
 	initialize_board()
@@ -25,14 +28,17 @@ func _on_column_clicked(column_index: int) -> void:
 	if next_empty_row[column_index] >= 0:
 		var new_piece_row : int = next_empty_row[column_index]
 		
+		empty_slots -= 1
 		next_empty_row[column_index] -= 1
 		board[new_piece_row][column_index] = current_player_piece
 		$PieceContainer.spawn_piece(get_cell_position(new_piece_row, column_index), current_player_piece)
 		
 		if WinChecker.check_win(board, new_piece_row, column_index):
-			print("Win detected!")
-		
-		current_player_piece = GameTypes.toggle_player_piece(current_player_piece)
+			game_over.emit(GameTypes.player_string(current_player_piece) + " wins!")
+		elif empty_slots == 0:
+			game_over.emit("It's a draw!")
+		else:
+			current_player_piece = GameTypes.toggle_player_piece(current_player_piece)
 
 func initialize_board() -> void:
 	board.clear()
