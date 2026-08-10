@@ -2,7 +2,7 @@ extends Control
 
 signal resume_pressed
 signal new_game_pressed
-signal exit_pressed
+signal main_menu_pressed
 
 func _on_resume_button_pressed() -> void:
 	resume_pressed.emit()
@@ -10,5 +10,5 @@ func _on_resume_button_pressed() -> void:
 func _on_start_button_pressed() -> void:
 	new_game_pressed.emit()
 
-func _on_exit_button_pressed() -> void:
-	exit_pressed.emit()
+func _on_main_menu_button_pressed() -> void:
+	main_menu_pressed.emit()

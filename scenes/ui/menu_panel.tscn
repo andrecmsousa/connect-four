@@ -25,6 +25,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="CenterContainer/MenuContainer" unique_id=1758190858]
 layout_mode = 2
 text = "CONNECT FOUR"
+horizontal_alignment = 1
 
 [node name="ButtonContainer" type="VBoxContainer" parent="CenterContainer/MenuContainer" unique_id=2055332975]
 layout_mode = 2

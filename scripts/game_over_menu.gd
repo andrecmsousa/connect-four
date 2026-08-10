@@ -1,7 +1,7 @@
 extends Control
 
 signal new_game_pressed
-signal exit_pressed
+signal main_menu_pressed
 
 func show_result(result_text: String) -> void:
 	$MenuPanel/CenterContainer/MenuContainer/Result.text = result_text
@@ -10,5 +10,5 @@ func show_result(result_text: String) -> void:
 func _on_start_button_pressed() -> void:
 	new_game_pressed.emit()
 
-func _on_exit_button_pressed() -> void:
-	exit_pressed.emit()
+func _on_main_menu_button_pressed() -> void:
+	main_menu_pressed.emit()

@@ -35,9 +35,9 @@ text = "Resume"
 layout_mode = 2
 text = "Start New Game"
 
-[node name="ExitButton" type="Button" parent="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="2" unique_id=1767888385]
+[node name="MainMenuButton" type="Button" parent="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(913458492, 2055332975) index="2" unique_id=1767888385]
 layout_mode = 2
-text = "Exit"
+text = "Go to Main Menu"
 
 [node name="GameOverMenu" type="Control" parent="MenuLayer" unique_id=1355576670]
 process_mode = 2
@@ -60,15 +60,15 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Start New Game"
 
-[node name="ExitButton" type="Button" parent="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(857645054, 2055332975) index="1" unique_id=2079397458]
+[node name="MainMenuButton" type="Button" parent="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer" parent_id_path=PackedInt32Array(857645054, 2055332975) index="1" unique_id=2079397458]
 layout_mode = 2
-text = "Exit"
+text = "Go to Main Menu"
 
 [connection signal="pressed" from="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ResumeButton" to="MenuLayer/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/StartButton" to="MenuLayer/PauseMenu" method="_on_start_button_pressed"]
-[connection signal="pressed" from="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ExitButton" to="MenuLayer/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/MainMenuButton" to="MenuLayer/PauseMenu" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/StartButton" to="MenuLayer/GameOverMenu" method="_on_start_button_pressed"]
-[connection signal="pressed" from="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ExitButton" to="MenuLayer/GameOverMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/MainMenuButton" to="MenuLayer/GameOverMenu" method="_on_main_menu_button_pressed"]
 
 [editable path="MenuLayer/PauseMenu/MenuPanel"]
 [editable path="MenuLayer/GameOverMenu/MenuPanel"]
