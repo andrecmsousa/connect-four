@@ -56,6 +56,7 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Go to Main Menu"
 
+[connection signal="turn_changed" from="Board" to="." method="_on_turn_changed"]
 [connection signal="pressed" from="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/ResumeButton" to="MenuLayer/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MenuLayer/PauseMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/MainMenuButton" to="MenuLayer/PauseMenu" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="MenuLayer/GameOverMenu/MenuPanel/CenterContainer/MenuContainer/ButtonContainer/MainMenuButton" to="MenuLayer/GameOverMenu" method="_on_main_menu_button_pressed"]
