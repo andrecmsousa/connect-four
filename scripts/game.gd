@@ -14,10 +14,6 @@ func resume_game() -> void:
 	pause_menu.hide()
 	get_tree().paused = false
 
-func start_new_game() -> void:
-	get_tree().paused = false
-	get_tree().reload_current_scene()
-
 func game_over(result: String) -> void:
 	game_over_menu.show_result(result)
 	get_tree().paused = true
@@ -28,9 +24,7 @@ func go_to_main_menu() -> void:
 
 func _ready() -> void:
 	pause_menu.resume_pressed.connect(resume_game)
-	pause_menu.new_game_pressed.connect(start_new_game)
 	pause_menu.main_menu_pressed.connect(go_to_main_menu)
-	game_over_menu.new_game_pressed.connect(start_new_game)
 	game_over_menu.main_menu_pressed.connect(go_to_main_menu)
 	game_board.game_over.connect(game_over)
 	pause_menu.hide()
