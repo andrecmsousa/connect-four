@@ -1,8 +1,8 @@
-extends Node
+class_name Game extends Node
 
-@onready var pause_menu = $MenuLayer/PauseMenu
-@onready var game_over_menu = $MenuLayer/GameOverMenu
-@onready var game_board = $Board
+@onready var pause_menu : PauseMenu = $MenuLayer/PauseMenu
+@onready var game_over_menu : GameOverMenu = $MenuLayer/GameOverMenu
+@onready var board : Board = $Board
 
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
 
@@ -26,7 +26,7 @@ func _ready() -> void:
 	pause_menu.resume_pressed.connect(resume_game)
 	pause_menu.main_menu_pressed.connect(go_to_main_menu)
 	game_over_menu.main_menu_pressed.connect(go_to_main_menu)
-	game_board.game_over.connect(game_over)
+	board.game_over.connect(game_over)
 	pause_menu.hide()
 	game_over_menu.hide()
 

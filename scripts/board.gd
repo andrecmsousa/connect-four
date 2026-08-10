@@ -1,10 +1,10 @@
-extends Node2D
+class_name Board extends Node2D
 
 @export var column_scene: PackedScene
-var board : Array = []
+var board : Array[Array] = []
 var next_empty_row : Array[int] = []
-var current_player_piece = GameTypes.PlayerPiece.NONE
-var empty_slots = GameTypes.COLUMN_COUNT * GameTypes.ROW_COUNT
+var current_player_piece := GameTypes.PlayerPiece.NONE
+var empty_slots := GameTypes.COLUMN_COUNT * GameTypes.ROW_COUNT
 
 const CELL_WIDTH := 80
 
@@ -15,7 +15,7 @@ func _ready() -> void:
 	current_player_piece = GameTypes.PlayerPiece.PLAYER_ONE
 	
 	for i in GameTypes.COLUMN_COUNT:
-		var column = column_scene.instantiate()
+		var column : Column = column_scene.instantiate()
 		
 		column.column_index = i
 		column.position = Vector2(i * CELL_WIDTH, 0)

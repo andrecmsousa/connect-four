@@ -1,4 +1,4 @@
-extends Control
+class_name GameOverMenu extends Control
 
 signal main_menu_pressed
 

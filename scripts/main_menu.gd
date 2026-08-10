@@ -1,4 +1,4 @@
-extends Control
+class_name MainMenu extends Control
 
 const GAME_SCENE_PATH = "res://scenes/game.tscn"
 
