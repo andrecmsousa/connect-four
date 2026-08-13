@@ -2,7 +2,7 @@ class_name Column extends Area2D
 
 signal column_clicked(column_index: int)
 
-@onready var highlight = $Highlight
+@onready var highlight := $Highlight
 var column_index := -1
 
 func _ready() -> void:

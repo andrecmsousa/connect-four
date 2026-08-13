@@ -47,10 +47,10 @@ static func _check_line(board: Array, piece_row: int, piece_column: int, line_ty
 			 + _check_direction(board, piece_row, piece_column, LINE_TO_DIRECTIONS[line_type][1]) >= GameTypes.CONNECT_LENGTH
 
 static func _check_direction(board: Array, piece_row: int, piece_column: int, direction: Direction) -> int:
-	var player_piece : GameTypes.PlayerPiece = board[piece_row][piece_column]
+	var player_piece: GameTypes.PlayerPiece = board[piece_row][piece_column]
 	
-	var current_row : int = piece_row + DIRECTION_TO_VECTOR[direction].x
-	var current_column : int = piece_column + DIRECTION_TO_VECTOR[direction].y
+	var current_row: int = piece_row + DIRECTION_TO_VECTOR[direction].x
+	var current_column: int = piece_column + DIRECTION_TO_VECTOR[direction].y
 	
 	var piece_count := 0
 	while current_column < GameTypes.COLUMN_COUNT and current_column >= 0 and current_row < GameTypes.ROW_COUNT and current_row >= 0:

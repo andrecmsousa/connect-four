@@ -1,8 +1,8 @@
 class_name Board extends Node2D
 
 @export var column_scene: PackedScene
-var board : Array[Array] = []
-var next_empty_row : Array[int] = []
+var board: Array[Array] = []
+var next_empty_row: Array[int] = []
 var current_player_piece := GameTypes.PlayerPiece.NONE
 var empty_slots := GameTypes.COLUMN_COUNT * GameTypes.ROW_COUNT
 
@@ -16,7 +16,7 @@ func _ready() -> void:
 	current_player_piece = GameTypes.PlayerPiece.PLAYER_ONE
 	
 	for i in GameTypes.COLUMN_COUNT:
-		var column : Column = column_scene.instantiate()
+		var column: Column = column_scene.instantiate()
 		
 		column.column_index = i
 		column.position = Vector2(i * CELL_WIDTH, 0)
@@ -29,7 +29,7 @@ func _on_column_clicked(column_index: int) -> void:
 	make_move(column_index)
 
 func get_available_columns() -> Array[int]:
-	var available_columns : Array[int] = []
+	var available_columns: Array[int] = []
 	
 	for column in GameTypes.COLUMN_COUNT:
 		if next_empty_row[column] >= 0:
@@ -41,7 +41,7 @@ func make_move(column_index: int) -> void:
 	if next_empty_row[column_index] < 0:
 		return
 	
-	var new_piece_row : int = next_empty_row[column_index]
+	var new_piece_row: int = next_empty_row[column_index]
 	
 	empty_slots -= 1
 	next_empty_row[column_index] -= 1

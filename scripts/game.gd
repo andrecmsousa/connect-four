@@ -1,8 +1,8 @@
 class_name Game extends Node
 
-@onready var pause_menu : PauseMenu = $MenuLayer/PauseMenu
-@onready var game_over_menu : GameOverMenu = $MenuLayer/GameOverMenu
-@onready var board : Board = $Board
+@onready var pause_menu: PauseMenu = $MenuLayer/PauseMenu
+@onready var game_over_menu: GameOverMenu = $MenuLayer/GameOverMenu
+@onready var board: Board = $Board
 
 var ai := AI.new()
 
