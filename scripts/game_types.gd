@@ -1,5 +1,12 @@
 class_name GameTypes extends RefCounted
 
+enum Result {
+	UNDETERMINED,
+	PLAYER_ONE_WINS,
+	PLAYER_TWO_WINS,
+	DRAW
+}
+
 enum PlayerPiece {
 	NONE,
 	PLAYER_ONE,
@@ -35,3 +42,14 @@ static func player_string(player_piece: PlayerPiece) -> String:
 			return "Red"
 		_:
 			return "No"
+
+static func result_string(result: Result) -> String:
+	match result:
+		Result.PLAYER_ONE_WINS:
+			return player_string(PlayerPiece.PLAYER_ONE) + " wins!"
+		Result.PLAYER_TWO_WINS:
+			return player_string(PlayerPiece.PLAYER_TWO) + " wins!"
+		Result.DRAW:
+			return "It's a draw!"
+		_:
+			return ""
