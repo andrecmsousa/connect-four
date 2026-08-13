@@ -25,22 +25,18 @@ func _on_column_clicked(column_index: int) -> void:
 	make_move(column_index)
 
 func make_move(column_index: int) -> void:
-	var new_piece_row: int = game_state.get_next_available_row(column_index)
+	var current_player: GameTypes.PlayerPiece = game_state.current_player
+	var new_piece_row: int = game_state.make_move(column_index)
 	if new_piece_row < 0:
 		return
 	
-	$PieceContainer.spawn_piece(get_cell_position(new_piece_row, column_index), game_state.get_current_player())
-	game_state.make_move(column_index)
+	$PieceContainer.spawn_piece(get_cell_position(new_piece_row, column_index), current_player)
 	
-	var current_result: GameTypes.Result = game_state.get_current_result()
-	
+	var current_result: GameTypes.Result = game_state.current_result
 	if current_result != GameTypes.Result.UNDETERMINED:
 		game_over.emit(GameTypes.result_string(current_result))
 	else:
-		turn_changed.emit(game_state.get_current_player())
+		turn_changed.emit(game_state.current_player)
 
 func get_cell_position(row: int, column: int) -> Vector2:
 	return Vector2(column * CELL_WIDTH, row * CELL_WIDTH)
-
-func get_state() -> GameState:
-	return game_state

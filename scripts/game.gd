@@ -25,7 +25,7 @@ func go_to_main_menu() -> void:
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE_PATH)
 
 func make_ai_move() -> void:
-	board.make_move(ai.choose_move(board.get_state()))
+	board.make_move(ai.choose_move(board.game_state))
 
 func _ready() -> void:
 	pause_menu.resume_pressed.connect(resume_game)

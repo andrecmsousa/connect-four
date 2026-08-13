@@ -21,6 +21,17 @@ func _init() -> void:
 	empty_slots = GameTypes.ROW_COUNT * GameTypes.COLUMN_COUNT
 	current_result = GameTypes.Result.UNDETERMINED
 
+func duplicate() -> GameState:
+	var duplicated_state := GameState.new()
+	
+	duplicated_state.board = board.duplicate(true)
+	duplicated_state.current_player = current_player
+	duplicated_state.next_empty_row = next_empty_row.duplicate()
+	duplicated_state.empty_slots = empty_slots
+	duplicated_state.current_result = current_result
+	
+	return duplicated_state
+
 func get_available_columns() -> Array[int]:
 	var available_columns: Array[int] = []
 	
@@ -30,12 +41,9 @@ func get_available_columns() -> Array[int]:
 	
 	return available_columns
 
-func get_next_available_row(column: int) -> int:
-	return next_empty_row[column]
-
-func make_move(column: int) -> void:
+func make_move(column: int) -> int:
 	if next_empty_row[column] < 0:
-		return
+		return -1
 	
 	var new_piece_row: int = next_empty_row[column]
 	
@@ -55,9 +63,5 @@ func make_move(column: int) -> void:
 		current_result = GameTypes.Result.DRAW
 	else:
 		current_player = GameTypes.toggle_player_piece(current_player)
-
-func get_current_player() -> GameTypes.PlayerPiece:
-	return current_player
-
-func get_current_result() -> GameTypes.Result:
-	return current_result
+	
+	return new_piece_row
