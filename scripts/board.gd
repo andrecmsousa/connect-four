@@ -26,7 +26,7 @@ func _on_column_clicked(column_index: int) -> void:
 
 func make_move(column_index: int) -> void:
 	var current_player: GameTypes.PlayerPiece = game_state.current_player
-	var new_piece_row: int = game_state.make_move(column_index)
+	var new_piece_row: int = game_state.commit_current_player_move(column_index)
 	if new_piece_row < 0:
 		return
 	

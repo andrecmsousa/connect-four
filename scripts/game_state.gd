@@ -41,7 +41,7 @@ func get_available_columns() -> Array[int]:
 	
 	return available_columns
 
-func make_move(column: int) -> int:
+func make_move_as_player(column: int, player: GameTypes.PlayerPiece) -> int:
 	if next_empty_row[column] < 0:
 		return -1
 	
@@ -49,10 +49,10 @@ func make_move(column: int) -> int:
 	
 	empty_slots -= 1
 	next_empty_row[column] -= 1
-	board[new_piece_row][column] = current_player
+	board[new_piece_row][column] = player
 	
 	if WinChecker.check_win(board, new_piece_row, column):
-		match current_player:
+		match player:
 			GameTypes.PlayerPiece.PLAYER_ONE:
 				current_result = GameTypes.Result.PLAYER_ONE_WINS
 			GameTypes.PlayerPiece.PLAYER_TWO:
@@ -61,7 +61,10 @@ func make_move(column: int) -> int:
 				current_result = GameTypes.Result.UNDETERMINED
 	elif empty_slots == 0:
 		current_result = GameTypes.Result.DRAW
-	else:
-		current_player = GameTypes.toggle_player_piece(current_player)
 	
+	return new_piece_row
+
+func commit_current_player_move(column: int) -> int:
+	var new_piece_row: int = make_move_as_player(column, current_player)
+	current_player = GameTypes.toggle_player_piece(current_player)
 	return new_piece_row
