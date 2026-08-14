@@ -66,5 +66,6 @@ func make_move_as_player(column: int, player: GameTypes.PlayerPiece) -> MoveResu
 
 func commit_current_player_move(column: int) -> MoveResult:
 	var move_result: MoveResult = make_move_as_player(column, current_player)
-	current_player = GameTypes.toggle_player_piece(current_player)
+	if move_result != null:
+		current_player = GameTypes.toggle_player_piece(current_player)
 	return move_result
