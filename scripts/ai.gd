@@ -28,7 +28,7 @@ func evaluate_move(game_state: GameState, column: int) -> int:
 	if hypothetical_state_ai_move.current_result == GameTypes.Result.PLAYER_TWO_WINS:
 		move_value = 1000
 	elif hypothetical_state_player_move.current_result == GameTypes.Result.PLAYER_ONE_WINS:
-		move_value = 100
+		move_value = 500
 	else:
 		move_value = min(GameTypes.COLUMN_COUNT - column, column + 1)
 		move_value += max(0, (WinChecker.check_longest_line(hypothetical_state_ai_move.board, ai_move_row, column) - 1) * 30 - 10)
