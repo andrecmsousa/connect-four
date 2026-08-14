@@ -37,14 +37,19 @@ const DIRECTION_TO_VECTOR := {
 }
 
 static func check_win(board: Array, piece_row: int, piece_column: int) -> bool:
-	return _check_line(board, piece_row, piece_column, Line.HORIZONTAL) or \
-		   _check_line(board, piece_row, piece_column, Line.VERTICAL) or \
-		   _check_line(board, piece_row, piece_column, Line.RISING_DIAGONAL) or \
-		   _check_line(board, piece_row, piece_column, Line.FALLING_DIAGONAL)
+	return check_longest_line(board, piece_row, piece_column) >= GameTypes.CONNECT_LENGTH
 
-static func _check_line(board: Array, piece_row: int, piece_column: int, line_type: Line) -> bool:
+static func check_longest_line(board: Array, piece_row: int, piece_column: int) -> int:
+	return max(
+		_check_line(board, piece_row, piece_column, Line.HORIZONTAL),
+		_check_line(board, piece_row, piece_column, Line.VERTICAL),
+		_check_line(board, piece_row, piece_column, Line.RISING_DIAGONAL),
+		_check_line(board, piece_row, piece_column, Line.FALLING_DIAGONAL)
+	)
+
+static func _check_line(board: Array, piece_row: int, piece_column: int, line_type: Line) -> int:
 	return 1 + _check_direction(board, piece_row, piece_column, LINE_TO_DIRECTIONS[line_type][0]) \
-			 + _check_direction(board, piece_row, piece_column, LINE_TO_DIRECTIONS[line_type][1]) >= GameTypes.CONNECT_LENGTH
+			 + _check_direction(board, piece_row, piece_column, LINE_TO_DIRECTIONS[line_type][1])
 
 static func _check_direction(board: Array, piece_row: int, piece_column: int, direction: Direction) -> int:
 	var player_piece: GameTypes.PlayerPiece = board[piece_row][piece_column]
