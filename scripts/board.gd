@@ -31,8 +31,8 @@ func make_move(column_index: int) -> void:
 	
 	$PieceContainer.spawn_piece(get_cell_position(move_result.row, column_index), move_result.player)
 	
-	if move_result.result != GameTypes.Result.UNDETERMINED:
-		game_over.emit(GameTypes.result_string(move_result.result))
+	if move_result.game_result != GameTypes.Result.UNDETERMINED:
+		game_over.emit(GameTypes.result_string(move_result.game_result))
 	else:
 		turn_changed.emit(game_state.current_player)
 

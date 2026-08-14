@@ -28,10 +28,10 @@ func evaluate_move(game_state: GameState, column: int) -> int:
 	var ai_move_result: MoveResult = hypothetical_state_ai_move.make_move_as_player(column, GameTypes.PlayerPiece.PLAYER_TWO)
 	var player_move_result: MoveResult = hypothetical_state_player_move.make_move_as_player(column, GameTypes.PlayerPiece.PLAYER_ONE)
 	
-	if ai_move_result.result == GameTypes.Result.PLAYER_TWO_WINS:
+	if ai_move_result.game_result == GameTypes.Result.PLAYER_TWO_WINS:
 		# 1000 for basic Connect Four
 		move_value = GameTypes.CONNECT_LENGTH * WIN_VALUE_PER_PIECE
-	elif player_move_result.result == GameTypes.Result.PLAYER_ONE_WINS:
+	elif player_move_result.game_result == GameTypes.Result.PLAYER_ONE_WINS:
 		# 900 for basic Connect Four
 		move_value = GameTypes.CONNECT_LENGTH * BLOCK_VALUE_PER_PIECE
 	else:
